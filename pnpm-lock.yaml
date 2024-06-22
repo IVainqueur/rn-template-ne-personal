@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@gluestack-style/animation-resolver':
+        specifier: ^1.0.4
+        version: 1.0.4(@gluestack-style/react@1.0.56)
       '@gluestack-style/react':
         specifier: ^1.0.56
         version: 1.0.56

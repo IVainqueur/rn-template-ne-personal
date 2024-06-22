@@ -1,9 +1,8 @@
 import {Box, Button, ButtonText, Text} from '@gluestack-ui/themed';
-import React, {useEffect, useMemo} from 'react';
-import {useAuth} from '../../utils/useAuth.hook';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigation} from '../../utils/types';
+import React, {useMemo} from 'react';
 import {useToast} from 'react-native-toast-notifications';
+import RotatingText from '../../components/RotatingText';
+import {useAuth} from '../../utils/useAuth.hook';
 
 const HomeScreen = () => {
   const {user} = useAuth() ?? {};
@@ -56,9 +55,12 @@ const HomeScreen = () => {
 
   return (
     <Box p={'$5'}>
-      <Text fontSize={30} fontWeight={'$bold'}>
-        Welcome back,
-      </Text>
+      <Box flexDirection='row' gap={'$2'}>
+        <RotatingText />
+        <Text fontSize={30} fontWeight={'$bold'}>
+          Welcome back,
+        </Text>
+      </Box>
       <Text>
         {user?.firstName} {user?.lastName}
       </Text>
