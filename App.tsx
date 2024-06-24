@@ -2,13 +2,13 @@ import {config} from '@gluestack-ui/config'; // Optional if you want to use defa
 import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ToastProvider} from 'react-native-toast-notifications';
-import LoginScreen from './src/screens/LoginScreen';
-import SignupScreen from './src/screens/SignupScreen';
-import {RootStackParamList} from './src/utils/types';
-import {AuthProvider} from './src/utils/useAuth.hook';
-import Tabs from './src/screens/(tabs)';
 import BootSplash from 'react-native-bootsplash';
+import {ToastProvider} from 'react-native-toast-notifications';
+import {RootStackParamList} from './src/utils/types';
+import HomeScreen from './src/screens/HomeScreen';
+import {PostsProvider} from './src/utils/usePost.hook';
+import SinglePostScreen from './src/screens/SinglePostScreen';
+import NewPostScreen from './src/screens/NewPostScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,17 +20,17 @@ export default function App() {
       }}>
       <GluestackUIProvider config={config}>
         <ToastProvider>
-          <AuthProvider>
+          <PostsProvider>
             <Stack.Navigator
-              initialRouteName="(tabs)"
+              initialRouteName="Home"
               screenOptions={{
                 headerShown: false,
               }}>
-              <Stack.Screen name="Login" component={LoginScreen} />
-              <Stack.Screen name="Signup" component={SignupScreen} />
-              <Stack.Screen name="(tabs)" component={Tabs} />
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Single-Post" component={SinglePostScreen} />
+              <Stack.Screen name="New-Post" component={NewPostScreen} />
             </Stack.Navigator>
-          </AuthProvider>
+          </PostsProvider>
         </ToastProvider>
       </GluestackUIProvider>
     </NavigationContainer>
